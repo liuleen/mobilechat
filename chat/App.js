@@ -16,13 +16,17 @@ export default class App extends React.Component {
   }
 
   render() {
+    const { messages } = this.state;
     return (
       <View style={styles.container}>
-        <Text>What it do, {this.state.input}</Text>
-        <TextInput 
+        <FlatList
+          data={messages}
+          renderItem={({item}) => <Text>{item}</Text>}
+        />
+        <TextInput
           onChangeText={(val) => this.setState({input: val})}
         />
-        <Button title='What is Bracking' onPress={() => {}} />
+        <Button title='Send it' onPress={() => this.onMessageSend()} />
       </View>
     );
   }

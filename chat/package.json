@@ -2,6 +2,11 @@
   "name": "chat",
   "main": "node_modules/expo/AppEntry.js",
   "private": true,
+  "devDependencies": {
+    "react-native-scripts": "1.8.1",
+    "jest-expo": "23.0.0",
+    "react-test-renderer": "16.0.0"
+  },
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
