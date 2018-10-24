@@ -1,6 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button, FlatList } from 'react-native';
 
+// import text input -> to send messages to ourselves
+
+// in order to be able to send messages, save messages, recieve messages -> we need to be able to modify the state
+// input == whatever is typed into textinput tag in render, starts off as empty string
+// 
 export default class App extends React.Component {
   constructor(props){
     super(props);
@@ -9,12 +14,13 @@ export default class App extends React.Component {
       messages: [],
     };
   }
-
+  
   onMessageSend(){
     const { input, messages } = this.state;
     messages.push(input);
   }
 
+  //onChangeText = gets the value when text is inputted, and passes it to input in the state
   render() {
     const { messages } = this.state;
     return (
