@@ -1,3 +1,7 @@
+Download/Create:
+1. npm install -g create-react-native-app
+2. 
+
 TODO:
 
 1. Creating and Launching a simple chat app (React Native)
@@ -18,8 +22,13 @@ maybe:
 
 Step 1:
 1. Start a react native project
+    a. Create frontend: 'create-react-native-app name_of_app'
 2. Launch project on emulator
+    a. npm start inside frontend directory
 3. Create a simple interface for reading messages
+    a. App.js
+    b. add import {TextInput and Button}
+    c. Create a state for text input changes
 4. Be able to send messages to yourself
 
 Step 2:
