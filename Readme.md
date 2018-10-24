@@ -13,4 +13,5 @@ Step 1:
 4. Be able to send messages to yourself
 
 Step 2:
-1. 
+1. Start Flask project
+2. Create a route for User Registration
