@@ -6,6 +6,16 @@ TODO:
 4. Connecting React Native to our Flask backend
 5. Swapping our in memory store for MySql
 
+Requirements: 
+1. Support 2 users to chat with eachother
+2. Send messages between user A and user B
+3. User registration
+
+maybe:
+1. Support more than 2 users
+2. Lazy loading of older messages
+3. Group chats
+
 Step 1:
 1. Start a react native project
 2. Launch project on emulator
