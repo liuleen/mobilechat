@@ -15,3 +15,8 @@ Step 1:
 Step 2:
 1. Start Flask project
 2. Create a route for User Registration
+
+Step 3:
+1. Create a route for incoming chats
+2. Create a second route for outgoing chats
+3. Create a third route for chat updates
