@@ -50,6 +50,13 @@ Step 2:
         i. app.run (debug for dev mode)
     c. Create first route (can place methods as second parameter)
     d. Test on Localhost:5000
+    e. Use postman to check routes
+        i. Post request "localhost:5000/login"
+        ii. Pass raw Json data 
+            ex: {
+	                "username": "rliu"
+                }
+        iii. Click send to test
 
 
 Step 3:
