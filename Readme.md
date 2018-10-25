@@ -61,5 +61,8 @@ Step 2:
 
 Step 3:
 1. Create a route for incoming chats
+    a. Create a send route
+    b. Create variables username, messages, timestamp
+    c. Generate an id for each message
 2. Create a second route for outgoing chats
 3. Create a third route for chat updates
