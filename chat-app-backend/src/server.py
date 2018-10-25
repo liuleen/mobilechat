@@ -7,11 +7,14 @@ from flask import (
 
 app = Flask(__name__)
 
+#global variable users to store usernames
 users = []
 
 @app.route("/")
 def hello():
     return "hello\n"
+
+# check if username is taken or nil
 
 @app.route("/login", methods=["POST"])
 def login():
