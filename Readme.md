@@ -29,11 +29,28 @@ Step 1:
     a. App.js
     b. add import {TextInput and Button}
     c. Create a state for text input changes
+    d. Create a variable string to store input
+    e. Create a variable list/array to save old messages in a list
+    f. Create a function to pass input into messages state
 4. Be able to send messages to yourself
+    a. Render messages using List view
+    b. Create a variable to get messages from state
 
 Step 2:
 1. Start Flask project
+    a. Virtualenv chat-app-backend
+        i. seperates packages, independent of project
+    b. Pip install flask
+    c. Activate the virtual environment
+        i. source bin/activate
+    d. mkdir src, cd src, touch server.py
 2. Create a route for User Registration
+    a. Import flask
+    b. Create app
+        i. app.run (debug for dev mode)
+    c. Create first route (can place methods as second parameter)
+    d. Test on Localhost:5000
+
 
 Step 3:
 1. Create a route for incoming chats
