@@ -5,7 +5,8 @@ import { StyleSheet, Text, View, TextInput, Button, FlatList } from 'react-nativ
 
 // in order to be able to send messages, save messages, recieve messages -> we need to be able to modify the state
 // input == whatever is typed into textinput tag in render, starts off as empty string
-// 
+// messages == store the list of messages that we have
+
 export default class App extends React.Component {
   constructor(props){
     super(props);
@@ -15,12 +16,15 @@ export default class App extends React.Component {
     };
   }
   
+  //function to take our current input from the state, and pass input into message list
   onMessageSend(){
     const { input, messages } = this.state;
     messages.push(input);
   }
 
   //onChangeText = gets the value when text is inputted, and passes it to input in the state
+  //flatlist = pass our data to display the list (messages), renderitem = render messages
+  //create a variable const {messages} to get the message in our state to pass into flat list
   render() {
     const { messages } = this.state;
     return (
