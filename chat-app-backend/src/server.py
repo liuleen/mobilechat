@@ -43,7 +43,12 @@ def send():
     username = request.json.get('username', None)
     message = request.json.get('message', None)
     timestamp = datetime.now()
-    id = uuid.uuid4()
+    id = str(uuid.uuid4())
+
+    if username is None or username not in users:
+        abort(401)
+    if message is None or message == "":
+        abort(400)
 
     messages[id] = {
         'username': username,
@@ -51,6 +56,14 @@ def send():
         'timestamp': timestamp,
         'id': id, 
     }
+
+    return jsonify(messages)
+
+# get query params -> last_id which is the id of the last message
+@app.route("/get/<last_id", methods=["GET"])
+def get(last_id):
+    username = request.json
+
 
 if __name__ == '__main__':
     app.run(debug=True)
