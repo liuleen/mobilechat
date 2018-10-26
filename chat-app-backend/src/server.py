@@ -66,6 +66,7 @@ def send():
 # get query params -> last_id which is the id of the last message
 # once client invokes a query to get with the last index, we look for 
 # the position in chat, if it exists we set it to index otherwise index remains as default (0)
+#index + 1 ensures that we are getting all the messages after, excluding the one we are currently sending in
 @app.route("/get/<last_id>", methods=["GET"])
 def get(last_id):
     if chat is None or len(chat) == 0:
@@ -74,7 +75,7 @@ def get(last_id):
     index = 0
     if last_id: #not an empty id
         try:
-            index = chat.index(last_id)
+            index = chat.index(last_id) + 1
         except ValueError as e:
             abort(400)
     ids_to_return = chat[index:]
