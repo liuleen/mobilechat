@@ -72,3 +72,4 @@ Step 3:
     e. Store variables and display variables in messages and jsonify it to render
     f. Create error checks (if username or message is empty and if username or message does not exist)
 3. Create a third route for chat updates
+    a. small lightweight route, that client can ping often to check if their are new messages to return TRUE if new messages exist and FALSE if no new messages
