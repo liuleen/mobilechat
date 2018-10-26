@@ -12,6 +12,9 @@ app = Flask(__name__)
 #global variable users to store usernames
 users = []
 
+#holds all message ids in order
+chat = []
+
 #create a dict to store messages
 messages = dict()
 
@@ -56,13 +59,28 @@ def send():
         'timestamp': timestamp,
         'id': id, 
     }
-
+    #retrieve new message and append the message ID to chat list
+    chat.append(id)
     return jsonify(messages)
 
 # get query params -> last_id which is the id of the last message
-@app.route("/get/<last_id", methods=["GET"])
+# once client invokes a query to get with the last index, we look for 
+# the position in chat, if it exists we set it to index otherwise index remains as default (0)
+@app.route("/get/<last_id>", methods=["GET"])
 def get(last_id):
-    username = request.json
+    if chat is None or len(chat) == 0:
+        return []
+
+    index = 0
+    if last_id: #not an empty id
+        try:
+            index = chat.index(last_id)
+        except ValueError as e:
+            abort(400)
+    ids_to_return = chat[index: ]
+    # map a function that gets our messages from get, map x to messages[x], take in ids_to_return (a list of index to end in chat)
+    results = map(lambda x : messages[x, ids_to_return])
+    return jsonify(list(results))
 
 
 if __name__ == '__main__':
