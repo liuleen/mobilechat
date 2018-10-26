@@ -64,5 +64,8 @@ Step 3:
     a. Create a send route
     b. Create variables username, messages, timestamp
     c. Generate an id for each message
+    d. Create a message variable dict to store messages
+    e. Store variables and display variables in messages and jsonify it to render
+    f. Create error checks (if username or message is empty and if username or message does not exist)
 2. Create a second route for outgoing chats
 3. Create a third route for chat updates
