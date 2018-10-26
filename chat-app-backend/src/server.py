@@ -77,9 +77,9 @@ def get(last_id):
             index = chat.index(last_id)
         except ValueError as e:
             abort(400)
-    ids_to_return = chat[index: ]
+    ids_to_return = chat[index:]
     # map a function that gets our messages from get, map x to messages[x], take in ids_to_return (a list of index to end in chat)
-    results = map(lambda x : messages[x, ids_to_return])
+    results = map(lambda x: messages[x], ids_to_return)
     return jsonify(list(results))
 
 
