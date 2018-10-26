@@ -63,7 +63,7 @@ Step 3:
 1. Create a route for incoming chats
     a. Create get route
     b. Create a new list -> chat to hold all message Id's in order
-    c. Retrieve message
+    c. Test on postman new get route
 2. Create a second route for outgoing chats
     a. Create a send route
     b. Create variables username, messages, timestamp
