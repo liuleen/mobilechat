@@ -74,7 +74,7 @@ def get(last_id):
     if chat is None or len(chat) == 0:
         return []
 
-    index = get_index(last_id) if last_id else 0
+    index = get_next_index(last_id) if last_id else 0
 
     # above is an easier way to write what's below
     # if last_id: #not an empty id
@@ -90,12 +90,20 @@ def get(last_id):
     #to test out message dict
     return jsonify(list(results))
 
+# small lightweight route, that client can ping often to check if their are new messages to return TRUE if new messages exist and FALSE if no new messages
+# check for last id's index and check if same length of chat, if so it means nothing new has appeared in chat, else something new has been sent
+# Create a result dict, put default values.
 @app.route("/updates/<last_id>", methods=["GET"])
 def update(last_id):
-    index = get_index(last_id) if last_id else 0
+    index = get_next_index(last_id) if last_id else 0
+    result = {
+        'new_messages': False
+    }
+    if index < len(chat):
+        results['new_messages'] = True
+        return jsonify(result)
 
-
-def get_index(last_id):
+def get_next_index(last_id):
     try:
         return chat.index(last_id) + 1
     except ValueError as e:
