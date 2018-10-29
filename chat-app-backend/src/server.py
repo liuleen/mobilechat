@@ -68,17 +68,21 @@ def send():
 # the position in chat, if it exists we set it to index otherwise index remains as default (0)
 # index + 1 ensures that we are getting all the messages after, excluding the one we are currently sending in
 # ids_to_return returnes all the chat of that index that we called, to the end of our last chat
+
 @app.route("/get/<last_id>", methods=["GET"])
 def get(last_id):
     if chat is None or len(chat) == 0:
         return []
 
-    index = 0
-    if last_id: #not an empty id
-        try:
-            index = chat.index(last_id) + 1
-        except ValueError as e:
-            abort(400)
+    index = get_index(last_id) if last_id else 0
+
+    # above is an easier way to write what's below
+    # if last_id: #not an empty id
+    #     try:
+    #         index = chat.index(last_id) + 1
+    #     except ValueError as e:
+    #         abort(400)
+
     ids_to_return = chat[index:]
     # map a function that gets our messages from get, map x to messages[x], take in ids_to_return (a list of index to end in chat)
     results = map(lambda x: messages[x], ids_to_return)
@@ -86,6 +90,16 @@ def get(last_id):
     #to test out message dict
     return jsonify(list(results))
 
+@app.route("/updates/<last_id>", methods=["GET"])
+def update(last_id):
+    index = get_index(last_id) if last_id else 0
+
+
+def get_index(last_id):
+    try:
+        return chat.index(last_id) + 1
+    except ValueError as e:
+        abort(400)
 
 if __name__ == '__main__':
     app.run(debug=True)
