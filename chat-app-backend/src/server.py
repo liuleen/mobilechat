@@ -101,7 +101,7 @@ def update(last_id):
     }
     if index < len(chat):
         result['new_messages'] = True
-        return jsonify(result)
+    return jsonify(result)
 
 def get_next_index(last_id):
     try:
