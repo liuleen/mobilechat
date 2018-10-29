@@ -20,7 +20,7 @@ maybe:
 2. Lazy loading of older messages
 3. Group chats
 
-Step 1:
+Step 1: Creating and launching a simple chat app (React Native)
 1. Start a react native project
     a. Create frontend: 'create-react-native-app name_of_app'
 2. Launch project on emulator
@@ -36,7 +36,7 @@ Step 1:
     a. Render messages using List view
     b. Create a variable to get messages from state
 
-Step 2:
+Step 2: Creating and launching a simple Flask app
 1. Start Flask project
     a. Virtualenv chat-app-backend
         i. seperates packages, independent of project
@@ -59,7 +59,7 @@ Step 2:
         iii. Click send to test
 
 
-Step 3:
+Step 3: Storing and Reading chats from memory (Flask)
 1. Create a route for incoming chats
     a. Create get route
     b. Create a new list -> chat to hold all message Id's in order
@@ -76,5 +76,17 @@ Step 3:
     e. Store variables and display variables in messages and jsonify it to render
     f. Create error checks (if username or message is empty and if username or message does not exist)
 3. Create a third route for chat updates
-    a. small lightweight route, that client can ping often to check if their are new messages to return TRUE if new messages exist and FALSE if no new messages
-    
+    a. Small lightweight route, that client can ping often to check if their are new messages to return TRUE if new messages exist and FALSE if no new messages
+    b. Can also use for "user 1 is typing now..." or real time updates
+    c. Check for last id's index and check if same length of chat, if so it means nothing new has appeared in chat, else something new has been sent
+    d. Create a result dict, put default values, default is false if meets condtions == true.
+
+Step 4: Connection React Native to our Flask backend
+    a. using an HTTP client called axios
+1. Indroduce and add axios - our http client
+    a. npm install --save axios
+2. Setup calls for:
+    a. Login
+    b. Send Messages
+    c. Read Messages
+    d. Check for new messages
