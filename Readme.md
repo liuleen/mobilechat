@@ -64,6 +64,10 @@ Step 3:
     a. Create get route
     b. Create a new list -> chat to hold all message Id's in order
     c. Test on postman new get route
+    d. Create a chat list, to store all the message ids so that we can display messages in chat in order from chat id invoked to the last one
+    e. Check if ID exists, if chat is None or if there is anything stored in chat
+    f. Map the ID given after /get/<las_id>, to the messages and return those messages in variable "result"
+    g. Jsonify using list function to list out results
 2. Create a second route for outgoing chats
     a. Create a send route
     b. Create variables username, messages, timestamp
@@ -73,8 +77,4 @@ Step 3:
     f. Create error checks (if username or message is empty and if username or message does not exist)
 3. Create a third route for chat updates
     a. small lightweight route, that client can ping often to check if their are new messages to return TRUE if new messages exist and FALSE if no new messages
-    b. get route to receive a list of chat messages
-    c. Create a chat list, to store all the message ids so that we can display messages in chat in order from chat id invoked to the last one
-    d. Check if ID exists, if chat is None or if there is anything stored in chat
-    e. Map the ID given after /get/<las_id>, to the messages and return those messages in variable "result"
-    f. Jsonify using list function to list out results
+    
