@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button, FlatList } from 'react-native';
-
+import axios from 'axios';
 // import text input -> to send messages to ourselves
 
 // in order to be able to send messages, save messages, recieve messages -> we need to be able to modify the state
@@ -29,6 +29,10 @@ export default class App extends React.Component {
     const { messages } = this.state;
     return (
       <View style={styles.container}>
+        {/* create a way for users to sign in */}
+        <View>
+
+        </View>
         <FlatList
           data={messages}
           renderItem={({item}) => <Text>{item}</Text>}
