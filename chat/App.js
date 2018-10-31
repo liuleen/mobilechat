@@ -13,6 +13,7 @@ export default class App extends React.Component {
     this.state = {
       input: '',
       messages: [],
+      username: '',
     };
   }
   
@@ -22,16 +23,29 @@ export default class App extends React.Component {
     messages.push(input);
   }
 
+  //function to login
+  onLogin() {
+    const { isLoggedIn } = this.state;
+    if (!isLoggedIn){
+
+    }
+  }
+
   //onChangeText = gets the value when text is inputted, and passes it to input in the state
   //flatlist = pass our data to display the list (messages), renderitem = render messages
   //create a variable const {messages} to get the message in our state to pass into flat list
   render() {
-    const { messages } = this.state;
+    const { messages, isLoggedIn } = this.state;
     return (
       <View style={styles.container}>
         {/* create a way for users to sign in */}
         <View>
-
+          <Text>Login</Text>
+          <TextInput
+            onChangeText={(val) => this.setState({username: val})}
+          />
+          <Button title='Login' onPress={() => this.onLogin()} />
+          <Text></Text>
         </View>
         <FlatList
           data={messages}
