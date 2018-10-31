@@ -45,7 +45,7 @@ export default class App extends React.Component {
             onChangeText={(val) => this.setState({username: val})}
           />
           <Button title='Login' onPress={() => this.onLogin()} />
-          <Text></Text>
+          <Text>Online Status: {isLoggedIn ? 'Online' : 'Offline'}</Text>
         </View>
         <FlatList
           data={messages}
