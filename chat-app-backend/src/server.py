@@ -110,4 +110,6 @@ def get_next_index(last_id):
         abort(400)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
+
+#host 0.0.0.0 tells flask to bind to any address
