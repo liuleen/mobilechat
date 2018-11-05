@@ -7,6 +7,11 @@ import axios from 'axios';
 // input == whatever is typed into textinput tag in render, starts off as empty string
 // messages == store the list of messages that we have
 
+const serverUrl = 'http://localhost:5000';
+const http = axios.create({
+  baseURL: serverUrl,
+});
+
 export default class App extends React.Component {
   constructor(props){
     super(props);
