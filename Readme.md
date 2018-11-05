@@ -84,9 +84,17 @@ Step 3: Storing and Reading chats from memory (Flask)
 Step 4: Connection React Native to our Flask backend
     a. using an HTTP client called axios
 1. Indroduce and add axios - our http client
-    a. npm install --save axios
+    a. npm install --save axios (axios is an HTTP client, manages request to our backend, use two callback functions, 1 for success 1 for error) (run this in react native directory)
+    b. npm start
 2. Setup calls for:
     a. Login
+        i. App.js:
+            aa. import axios
+            bb. Create a view for Login button, Text Input, changes username state
+            cc. Create onLogin function for Login button
+            dd. onLogin - check if logged in yet
+            ee. pass const isLoggedIn into state to show status of message
+            ff. 
     b. Send Messages
     c. Read Messages
     d. Check for new messages
