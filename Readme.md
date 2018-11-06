@@ -94,7 +94,8 @@ Step 4: Connection React Native to our Flask backend
             cc. Create onLogin function for Login button
             dd. onLogin - check if logged in yet
             ee. pass const isLoggedIn into state to show status of message
-            ff. 
+            ff. call to backend if not logged in: create a serverUrl variable with port 5000 and another variable to create axios object
+            gg. Fix android device local host connection by going to server.py and bind host address to any address with 0.0.0.0
     b. Send Messages
     c. Read Messages
     d. Check for new messages
