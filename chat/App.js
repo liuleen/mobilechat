@@ -7,7 +7,7 @@ import axios from 'axios';
 // input == whatever is typed into textinput tag in render, starts off as empty string
 // messages == store the list of messages that we have
 
-const serverUrl = 'http://64.62.224.29:5000';
+const serverUrl = 'http://localhost:5000';
 const http = axios.create({
   baseURL: serverUrl,
 });
@@ -18,32 +18,47 @@ export default class App extends React.Component {
     this.state = {
       input: '',
       messages: [],
-      username: '',
+      // username: '',
+      // isLoggedIn: false,
     };
-  }
-  
-  //function to take our current input from the state, and pass input into message list
-  onMessageSend(){
-    const { input, messages } = this.state;
-    messages.push(input);
+    // this.onLogin = this.onLogin.bind(this);
   }
 
   //function to login
   //if post successful, change state to true, else error
   onLogin() {
     const { isLoggedIn, username } = this.state;
-    if (!isLoggedIn){
+    if (!isLoggedIn) {
       http.post('/login', {username})
       .then(() => this.setState({isLoggedIn: true}))
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
     }
   }
+
+  addMessage(message){
+    const { messages } = this.state;
+    messages.push(message)
+    this.setState({
+      lastUpdated: new Date(),
+    })
+  }
+
+  //function to take our current input from the state, and pass input into message list
+  onMessageSend(){
+    const { input, username } = this.state;
+    http.post('/send', {
+      username,
+      message: input,
+    })
+    .then(() => this.addMessage(input));
+  }
+
 
   //onChangeText = gets the value when text is inputted, and passes it to input in the state
   //flatlist = pass our data to display the list (messages), renderitem = render messages
   //create a variable const {messages} to get the message in our state to pass into flat list
   render() {
-    const { messages, isLoggedIn } = this.state;
+    const { messages, isLoggedIn, lastUpdated } = this.state;
     return (
       <View style={styles.container}>
         {/* create a way for users to sign in */}
@@ -59,6 +74,7 @@ export default class App extends React.Component {
         <FlatList
           data={messages}
           renderItem={({item}) => <Text>{item}</Text>}
+          extraData={lastUpdated}
         />
         <TextInput
           onChangeText={(val) => this.setState({input: val})}
