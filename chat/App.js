@@ -29,10 +29,13 @@ export default class App extends React.Component {
   }
 
   //function to login
+  //if post successful, change state to true, else error
   onLogin() {
-    const { isLoggedIn } = this.state;
+    const { isLoggedIn, username } = this.state;
     if (!isLoggedIn){
-
+      http.post('/login', {username})
+      .then(() => this.setState({isLoggedIn: true}))
+      .catch((err) => console.log(err));
     }
   }
 
@@ -48,6 +51,7 @@ export default class App extends React.Component {
           <Text>Login</Text>
           <TextInput
             onChangeText={(val) => this.setState({username: val})}
+            //setting username and passing it to onLogin
           />
           <Button title='Login' onPress={() => this.onLogin()} />
           <Text>Online Status: {isLoggedIn ? 'Online' : 'Offline'}</Text>
