@@ -37,7 +37,7 @@ export default class App extends React.Component {
 
   addMessage(message){
     const { messages } = this.state;
-    messages.push(message)
+    messages.push(message);
     this.setState({
       lastUpdated: new Date(),
     })
