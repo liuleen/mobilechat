@@ -66,7 +66,7 @@ Step 3: Storing and Reading chats from memory (Flask)
     c. Test on postman new get route
     d. Create a chat list, to store all the message ids so that we can display messages in chat in order from chat id invoked to the last one
     e. Check if ID exists, if chat is None or if there is anything stored in chat
-    f. Map the ID given after /get/<las_id>, to the messages and return those messages in variable "result"
+    f. Map the ID given after /get/<last_id>, to the messages and return those messages in variable "result"
     g. Jsonify using list function to list out results
 2. Create a second route for outgoing chats
     a. Create a send route
@@ -100,5 +100,13 @@ Step 4: Connection React Native to our Flask backend
             hh. Now you can log in, so go back to onLogin() function and write function
 
     b. Send Messages
+        i. onMessageSend function, create post request on /send route with username, message information to the server
+        ii. extraData prop in Flatlist -> whatever we pass to it and when it changes, it re renders. So our state, everytime it changes, will update 
+        iii. add lastUpdated to state, so that the extraData can re render/update when lastUpdate is changed
+        iv. Create a new function called addMessage() -> makes messages rerender when add message is updated
+
+Add new package, lodash, deals with arrays and collections to make javascript easier to write with premade funcitons - does the heavy lifting for you
+    npm install --save lodash (in backend directory)
+
     c. Read Messages
     d. Check for new messages
