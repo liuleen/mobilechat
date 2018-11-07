@@ -104,6 +104,8 @@ Step 4: Connection React Native to our Flask backend
         ii. extraData prop in Flatlist -> whatever we pass to it and when it changes, it re renders. So our state, everytime it changes, will update 
         iii. add lastUpdated to state, so that the extraData can re render/update when lastUpdate is changed
         iv. Create a new function called addMessage() -> makes messages rerender when add message is updated
+        v. instead of sending all messages at once in server, we send ID's (send route), now we have a response from server
+        vi. go to onMessageSend(put response into .then)
 
 Add new package, lodash, deals with arrays and collections to make javascript easier to write with premade funcitons - does the heavy lifting for you
     npm install --save lodash (in backend directory)
