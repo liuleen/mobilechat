@@ -56,12 +56,14 @@ def send():
     messages[id] = {
         'username': username,
         'message': message,
-        'timestamp': timestamp,
+        'timestamp': datetime.now(),
         'id': id, 
     }
     #retrieve new message and append the message ID to chat list
     chat.append(id)
-    return jsonify(messages)
+    return jsonify({
+        'id' : id, 
+    })
 
 # get query params -> last_id which is the id of the last message
 # once client invokes a query to get with the last index, we look for 
@@ -88,7 +90,7 @@ def get(last_id):
     results = map(lambda x: messages[x], ids_to_return)
     
     #to test out message dict
-    return jsonify(list(results))
+    return jsonify(sorted(results, key=lambda x: x['timestamp']))
 
 # small lightweight route, that client can ping often to check if their are new messages to return TRUE if new messages exist and FALSE if no new messages
 # check for last id's index and check if same length of chat, if so it means nothing new has appeared in chat, else something new has been sent
