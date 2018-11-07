@@ -7,7 +7,7 @@ import axios from 'axios';
 // input == whatever is typed into textinput tag in render, starts off as empty string
 // messages == store the list of messages that we have
 
-const serverUrl = 'http://localhost:5000';
+const serverUrl = 'http://64.62.224.29:5000';
 const http = axios.create({
   baseURL: serverUrl,
 });
@@ -35,12 +35,21 @@ export default class App extends React.Component {
     }
   }
 
-  addMessage(message){
+  addMessage(data){
     const { messages } = this.state;
-    messages.push(message);
+    const { id, message } = data;
+    messages.push(data);
     this.setState({
       lastUpdated: new Date(),
-    })
+      lastId: id,
+    });
+  }
+
+  getMessages() {
+    const { lastId } = this.state;
+    http.get(`/get/${lastId}`)
+    .then((respnse) => response)
+    .catch((err) => console.log(err))
   }
 
   //function to take our current input from the state, and pass input into message list
@@ -50,7 +59,10 @@ export default class App extends React.Component {
       username,
       message: input,
     })
-    .then(() => this.addMessage(input));
+    .then((response) => this.addMessage({
+      message: input, 
+      id: response.data.id,
+    }));
   }
 
 
@@ -73,7 +85,7 @@ export default class App extends React.Component {
         </View>
         <FlatList
           data={messages}
-          renderItem={({item}) => <Text>{item}</Text>}
+          renderItem={({item}) => <Text>{item.message}</Text>}
           extraData={lastUpdated}
         />
         <TextInput
