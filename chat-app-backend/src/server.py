@@ -65,6 +65,7 @@ def send():
         'id' : id, 
     })
 
+@app.route("/get", defaults={'lastId': None})
 # get query params -> last_id which is the id of the last message
 # once client invokes a query to get with the last index, we look for 
 # the position in chat, if it exists we set it to index otherwise index remains as default (0)
