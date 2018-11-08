@@ -65,7 +65,7 @@ export default class App extends React.Component {
 
   getMessages() {
     const { lastId } = this.state;
-    http.get(`/get/${lastId}`)
+    http.get(lastId) ? (`/get/${lastId}` : '/get')
     .then((respnse) => this.addMessageList(response.data))
     .catch((err) => console.log(err))
   }
