@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button, FlatList } from 'react-native';
 import axios from 'axios';
+import tail from 'lodash/tail';
 // import text input -> to send messages to ourselves
 
 // in order to be able to send messages, save messages, recieve messages -> we need to be able to modify the state
@@ -30,9 +31,14 @@ export default class App extends React.Component {
     const { isLoggedIn, username } = this.state;
     if (!isLoggedIn) {
       http.post('/login', {username})
-      .then(() => this.setState({isLoggedIn: true}))
+      .then(() => this.onLoginSuccess())
       .catch((err) => console.log(err))
     }
+  }
+
+  onLoginSuccess() {
+    this.setState({isLoggedIn: true});
+    this.getMessages();
   }
 
   addMessage(data){
@@ -45,10 +51,22 @@ export default class App extends React.Component {
     });
   }
 
+  addMessageList(list){
+    if (!list || list.length == 0){
+      return;
+    }
+    const { messages } = this.state;
+    this.setState({
+      messages : [...messages, ...list],
+      lastUpdated: new Date(),
+      lastId: tail(list).id,
+    })
+  }
+
   getMessages() {
     const { lastId } = this.state;
     http.get(`/get/${lastId}`)
-    .then((respnse) => response)
+    .then((respnse) => this.addMessageList(response.data))
     .catch((err) => console.log(err))
   }
 
